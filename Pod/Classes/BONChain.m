@@ -241,4 +241,25 @@
     return [indentSpacerBlock copy];
 }
 
+- (void)linkWithChain:(BONChain *)chain;
+{
+  [self appendText:self.text withText:chain.text];
+}
+
+- (void)linkWithChain:(BONChain *)chain usingSeparator:(NSString *)seperator{
+  if (seperator){
+    BONChain *copy = self.copy;
+    [self linkWithChain: copy.string(seperator)];
+  }
+  [self linkWithChain:chain];
+}
+
+- (void)appendText:(BONText *)text withText:(BONText *)appendText{
+  if (text.nextText){
+    [self appendText:text.nextText withText:appendText];
+  }else{
+    text.nextText = appendText;
+  }
+}
+
 @end

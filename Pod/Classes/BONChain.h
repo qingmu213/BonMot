@@ -65,4 +65,8 @@ typedef BONChain*(^BONChainAppendWithSeparator)(NSString *separator, id chainOrT
  */
 @property (copy, nonatomic, readonly) BONChainIndentSpacer indentSpacer;
 
+// Linking methods to concatenate chain objects if they can't be set in one statement
+- (void)linkWithChain:(BONChain *)chain;
+- (void)linkWithChain:(BONChain *)chain usingSeparator:(NSString *)seperator;
+
 @end
